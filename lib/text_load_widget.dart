@@ -1,15 +1,15 @@
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart' show rootBundle;
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class TextLoaderWidget extends StatefulWidget {
+  const TextLoaderWidget({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _MyHomePageState createState() => _MyHomePageState();
+  _TextLoaderWidgetState createState() => _TextLoaderWidgetState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _TextLoaderWidgetState extends State<TextLoaderWidget> {
   String _fileContents = "";
 
   @override

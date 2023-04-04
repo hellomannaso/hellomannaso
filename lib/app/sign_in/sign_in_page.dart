@@ -5,13 +5,7 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Time Tracker'),
-        elevation: 2.0,
-      ),
-      body: _buildContent(),
-    );
+    return _buildContent();
   }
 
   Widget _buildContent() {
