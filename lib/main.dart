@@ -2,17 +2,20 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:hello_mannaso_world/text_load_widget.dart';
+// import 'package:hello_mannaso_world/my_widgets/script.dart';
 import 'firebase_options.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:hello_mannaso_world/app/sign_in/sign_in_page.dart';
-import 'package:hello_mannaso_world/mywidget/textwidget.dart';
+// import 'package:hello_mannaso_world/app/sign_in/sign_in_page.dart';
+
+import 'my_widgets/asset_list_and_text_load_widget.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(MyApp());
 }
 
@@ -36,18 +39,9 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('AppBar Title'),
+          title: const Text('2023-04-13 English Training'),
         ),
-        body: SingleChildScrollView(
-          child: Column(children: [
-            SignInPage(),
-            MyTextWidget(text: 'Hello, World!'),
-            const Center(
-              child: TextLoaderWidget(),
-            ),
-            MyTextWidget(text: 'Hello, World!'),
-          ]),
-        ),
+        body: AssetListAndTextLoaderWidget(),
       ),
     );
   }

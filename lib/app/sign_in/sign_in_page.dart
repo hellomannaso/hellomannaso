@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:hello_mannaso_world/recording/recording.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -29,6 +30,18 @@ class SignInPage extends StatelessWidget {
             onPressed: () {
               print('button pressed');
             },
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              print('Recording started');
+            },
+            child: Text('Start Recording'),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              print('Recording stopped');
+            },
+            child: Text('Stop Recording'),
           ),
         ],
       ),
