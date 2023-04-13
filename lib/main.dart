@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mannaso English Hello Stella',
+      title: 'Hello Mannaso, Hello Stella, Hello JH',
       theme: ThemeData(
         buttonTheme: Theme.of(context).buttonTheme.copyWith(
               highlightColor: Colors.deepPurple,
@@ -39,9 +39,15 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('2023-04-13 English Training'),
+          title: Text(
+            "[입트영]Mannaso's April",
+            style: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme)
+                .headlineLarge,
+          ),
         ),
-        body: AssetListAndTextLoaderWidget(),
+        body: SingleChildScrollView(
+          child: AssetListAndTextLoaderWidget(),
+        ),
       ),
     );
   }

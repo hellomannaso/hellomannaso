@@ -44,11 +44,15 @@ class _AssetListWidgetState extends State<AssetListWidget> {
             itemCount: _files.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              final fileName = _files[index];
+              String fileName = _files[index];
+              if (fileName.contains('assets/')) {
+                fileName = fileName.replaceAll('assets/', '');
+              }
               return ListTile(
                 title: Text(fileName),
                 onTap: () {
                   // do something with the selected file
+
                   widget.onItemTap(fileName);
                 },
               );

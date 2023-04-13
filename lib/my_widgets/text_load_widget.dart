@@ -12,45 +12,39 @@ class TextLoaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      // children: [
-      //   SizedBox(
-      //     height: 100,
-      //     child: Text('1'),
-      //   ),
-      //   SizedBox(
-      //     height: 150,
-      //     child: Text('2'),
-      //   ),
-      //   SizedBox(
-      //     height: 80,
-      //     child: Text('3'),
-      //   ),
-      // ],
-      // ad
-      // shrinkWrap: true,
+      shrinkWrap: true,
       children: [
         Column(
           children: fileContents.asMap().entries.map((entry) {
-            int index = entry.key;
-            String line = entry.value;
-            return Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Wrap(children: [
-                    Flexible(
-                      child: Text(
-                        '$index: $line',
-                        overflow: TextOverflow.clip,
+            int index = entry.key; // Numbering
+            String line = entry.value; // Actual Text (content)
+            return SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: Row(children: [
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    color: Colors.white54,
+                  ),
+                  child: Text('$index',
+                      style: GoogleFonts.robotoTextTheme(
+                              Theme.of(context).textTheme)
+                          .headlineMedium),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text.rich(
+                      TextSpan(
+                        text: '$line',
                         style: GoogleFonts.robotoTextTheme(
-                          Theme.of(context).textTheme,
-                        ).displaySmall,
+                                Theme.of(context).textTheme)
+                            .bodyLarge,
                       ),
                     ),
-                  ]),
+                  ),
                 ),
-                SizedBox(height: 5),
-              ],
+              ]),
             );
           }).toList(),
         ),
