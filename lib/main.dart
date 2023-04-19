@@ -37,18 +37,26 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         useMaterial3: true,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "[입트영]Mannaso's April",
-            style: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme)
-                .headlineLarge,
-          ),
-        ),
-        body: SingleChildScrollView(
-          child: AssetListAndTextLoaderWidget(),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "[입트영]April",
+          style: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme)
+              .headlineLarge,
         ),
       ),
+      body: AssetListAndTextLoaderWidget(),
+      // ),?
     );
   }
 }

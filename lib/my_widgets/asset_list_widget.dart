@@ -40,26 +40,62 @@ class _AssetListWidgetState extends State<AssetListWidget> {
   @override
   Widget build(BuildContext context) {
     return _files.isNotEmpty
-        ? ListView.builder(
-            itemCount: _files.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              String fileName = _files[index];
+        ? Column(children: <Widget>[
+            Wrap(
+                children: _files.map((fileName) {
               if (fileName.contains('assets/')) {
                 fileName = fileName.replaceAll('assets/', '');
               }
-              return ListTile(
-                title: Text(fileName),
-                onTap: () {
-                  // do something with the selected file
-
-                  widget.onItemTap(fileName);
-                },
+              return Container(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        widget.onItemTap(fileName);
+                      },
+                      child: Text(
+                        fileName,
+                        style: TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.bold),
+                      ),
+                    )
+                    // other widgets
+                  ],
+                ),
               );
-            },
-          )
+            }).toList())
+          ])
         : Center(
             child: CircularProgressIndicator(),
           );
   }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return _files.isNotEmpty
+  //       ? ListView.builder(
+  //           physics: NeverScrollableScrollPhysics(),
+  //           itemCount: _files.length,
+  //           shrinkWrap: true,
+  //           itemBuilder: (context, index) {
+  //             String fileName = _files[index];
+  //             if (fileName.contains('assets/')) {
+  //               fileName = fileName.replaceAll('assets/', '');
+  //             }
+  //             return ListTile(
+  //               title: Text(fileName),
+  //               onTap: () {
+  //                 // do something with the selected file
+
+  //                 widget.onItemTap(fileName);
+  //               },
+  //             );
+  //           },
+  //         )
+  //       : Center(
+  //           child: CircularProgressIndicator(),
+  //         );
+  // }
 }

@@ -32,25 +32,33 @@ class _AssetListAndTextLoaderWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          // width: MediaQuery.of(context).size.width / 4,
-          // height: MediaQuery.of(context).size.height / 2,
-          TextLoaderWidget(
-            // I deleted SingleChildScrollView here
-            // Well this is a listview
-            fileContents: _fileContents,
-          ),
-
-          // SizedBox(
-          // width: MediaQuery.of(context).size.width / 4,
-          // height: MediaQuery.of(context).size.height / 2,r
-          AssetListWidget(
-            onItemTap: _update,
-          ),
-        ],
-      ),
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        return ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: constraints.maxHeight,
+            ),
+            child: SingleChildScrollView(
+              physics: AlwaysScrollableScrollPhysics(),
+              child: Column(
+                children: [
+                  // width: MediaQuery.of(context).size.width / 4,
+                  // height: MediaQuery.of(context).size.height / 2,
+                  TextLoaderWidget(
+                    // I deleted SingleChildScrollView here
+                    // Well this is a listview
+                    fileContents: _fileContents,
+                  ),
+                  // SizedBox(
+                  // width: MediaQuery.of(context).size.width / 4,
+                  // height: MediaQuery.of(context).size.height / 2,r
+                  AssetListWidget(
+                    onItemTap: _update,
+                  ),
+                ],
+              ),
+            ));
+      },
     );
   }
 }
